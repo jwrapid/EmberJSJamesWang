@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to James Wang's WebPage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This page is the webpage of James Wang">
+  <meta name="author" content="James T Wang">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/jwdesign-touchup.css">
+  <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+</head>
+<body>
+  <script type="text/x-handlebars">
+
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="navbar-inner">
+      <a class="navbar-brand" href="">James Wang</a>
+      <ul class="nav navbar-nav">
+        <li>{{#link-to 'projects'}}Projects{{/link-to}}</li>
+      </ul>
+      </div>
+    </nav>
+    
+    {{outlet}}
+
+    <hr>
+
+    <div class="panel panel-primary">
+      <div class="panel-body">
+
+        <div class="col-md-1">
+          <div class="hero-unit">
+          <img src="img/thumbs/jw-photo.png" alt="">
+          </div> {{! </hero-unit> }} 
+        </div>
+
+        <div class="col-xs-4 .col-md-6">
+          <p>Contact me <a class="imgPop" href="http://twitter.com/JWRapid">@JWRapid<span>
+            <img src="img/thumbs/tw-snapshot.jpg" alt="@jwrapid"/></span></a> or
+                      view my <a class="imgPop" href="http://www.linkedin.com/pub/james-wang/63/553/56a">LinkedIn<span>
+            <img src="img/thumbs/lkn-snapshot.jpg" alt="LinkedIn Profile"/></span></a> profile.</p>
+
+          <p>Looking for my personal blog?: <a class="imgPop" href="http://www.rapidchronicles.com">Rapid Chronicles<span>
+          <img src="img/thumbs/rc-snapshot.jpg" alt="Rapid Chronicles"/></span></a> or my <a class="imgPop" href="http://www.stories.rapidchronicles.com">Wiki</span></a></p>
+          <p>They are primarily used for my hobbies and interests.</p>
+        </div>
+
+      </div>
+
+      <div class="panel-footer">JWRapid - Site Built With <em><a href="http://emberjs.com/">Ember.JS</a></em> </div>
+    </div>
+
+  </script>
+
+  <script type="text/x-handlebars" id="projects/index">
+    <p class="text-warning"> Here are a few projects I have worked on</p>
+  </script>
+
+<script type="text/x-handlebars" id="projects">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="col-xs-6 col-sm-3">
+          <table class='table'>
+            <thead>
+              <tr><th>Projects</th></tr>
+            </thead>
+            {{#each model}}
+            <tr><td>
+                {{#link-to 'project' this}}{{title}}{{/link-to}}
+            </td></tr>
+            {{/each}}
+          </table>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="project">
+    <h1>{{title}}</h1>
+
+    <hr>
+
+    <div class='intro'>
+      {{excerpt}}
+    </div>
+
+    <div class='below-the-fold'>
+      <em>{{body}}</em>
+    </div>
+
+    <div class="btn-group">
+      <a {{bind-attr href="url"}} class="btn btn-primary"><i class="icon-white icon-hand-right"></i> {{about}}</a>
+    </div>
+
+  </script>
+
+  <script type="text/x-handlebars" id="index">
+  <div class="jumbotron">
+    <h1>Welcome!</h1>
+    <p>Hi, I am </h2> <em>James Wang</em>: <small>Computing Scientist, Game Ethusiast, and Lover of Awesome Technology</small></p>
+  </div>
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.4.0.js"></script>
+   <script src="js/libs/bootstrap.min.js"></script>
+  <script src="js/app.js"></script>
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
+</body>
+</html>
